@@ -53,3 +53,24 @@ plot(subset_air$DEPARTURE_DELAY ~ subset_air$DISTANCE,
      xlab = 'distance(miles)',
      ylab = 'delay (minutes)',
      log = 'x')
+
+x <- mean(air$DEPARTURE_DELAY, na.rm = TRUE)
+round(x, digits = 2)
+round(x, digits = 0)
+
+summary(air$ARRIVAL_DELAY - air$DEPARTURE_DELAY)
+
+delay <- air$DEPARTURE_DELAY
+delay[delay < 0] <- 0
+delay[delay > 0] <- 60
+hist(delay)
+hist(delay, nclass = 100)
+hist(delay, nclass = 5)
+hist(delay, breaks = 10)
+hist(delay, breaks = 100)
+
+sub <- air[air$DESTINATION_AIRPORT == "ORD" | air$DESTINATION_AIRPORT == "IAH",]
+plot(sub$DEPARTURE_TIME, sub$DEPARTURE_DELAY, main = 'Departure delay by time of the day')
+sub$color <- "blue"
+sub$color[sub$DESTINATION_AIRPORT == "IAH"] <- "red"
+plot(sub$DEPARTURE_TIME, sub$DEPARTURE_DELAY, col = sub$color, main = 'Departure delay by time of the day')

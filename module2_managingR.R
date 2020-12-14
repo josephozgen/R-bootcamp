@@ -1,0 +1,20 @@
+x <- rnorm(5)
+y <- c(5L, 2L, 7L)
+z <- list(a=3, b=c('sam', 'yang'))
+ls()
+rm(x)
+ls.str()
+rm(list = ls())
+#save.image('module2.Rda')
+#load('module2.Rda')
+air <- read.csv('airlines.csv', stringsAsFactors = FALSE)
+
+searchpaths()
+
+pdf('myplot.pdf', width = 7, height = 7)
+x <- rnorm(10); y <- rnorm(10)
+plot(x, y)
+dev.off()
+
+require(xtable)
+print(xtable(table(air$AIRLINE, air$CANCELLED)), type = "html") 
